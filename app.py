@@ -1,8 +1,6 @@
-# we used rf model that not only gives prediction but can also give its score 
+# we used rf model that not only gives prediction but can also give its score
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
-import pickle
-import pandas as pd
 from schema.user_input import UserInput
 from schema.prediction_response import PredictionResponse
 from model.predict import predict, Model_name, MODEL_version, model
@@ -21,7 +19,7 @@ def health_check():
 
 @app.post('/predict', response_model=PredictionResponse)
 def predict_premium(data: UserInput):
-    user_input ={
+    user_input = {
         'bmi': data.bmi,
         'age_group': data.age_group,
         'lifestyle_risk': data.lifestyle_risk,
@@ -30,8 +28,8 @@ def predict_premium(data: UserInput):
         'occupation': data.occupation
     }
     try:
-            prediction = predict(user_input)
-            return JSONResponse(status_code=200, content=prediction)
+        prediction = predict(user_input)
+        return JSONResponse(status_code=200, content=prediction)
     except Exception as e:
-            return JSONResponse(status_code=500, content=str(e))
+        return JSONResponse(status_code=500, content=str(e))
 

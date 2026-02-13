@@ -1,7 +1,11 @@
 import pickle
+from pathlib import Path
+
 import pandas as pd
+
 # import the ml model
-with open('model/model.pkl', 'rb') as f:
+_MODEL_PATH = Path(__file__).resolve().parent / 'model.pkl'
+with _MODEL_PATH.open('rb') as f:
     model = pickle.load(f)
 
 Model_name = "Insurance Premium Prediction API"
