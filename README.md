@@ -81,3 +81,5 @@ Once running, open a browser and navigate to:
 ```
 http://localhost:5000
 ```
+- Can also visit it via given link: https://insurance-premium-api-wrx6.onrender.com/
+
